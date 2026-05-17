@@ -1,0 +1,103 @@
+{
+    "max_open_trades": 6,
+    "stake_currency": "IDR",
+    "stake_amount": "unlimited",
+    "tradable_balance_ratio": 0.95,
+    "fiat_display_currency": "IDR",
+    "timeframe": "1h",
+    "dry_run": true,
+    "dry_run_wallet": 600000,
+    "cancel_open_orders_on_exit": false,
+    "trading_mode": "spot",
+    "margin_mode": "",
+    "unfilledtimeout": {
+        "entry": 10,
+        "exit": 10,
+        "exit_timeout_count": 0,
+        "unit": "minutes"
+    },
+    "entry_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "price_last_balance": 0.0,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "exit_pricing":{
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1
+    },
+    "exchange": {
+        "name": "indodax",
+        "key": "${INDODAX_API_KEY}",
+        "secret": "${INDODAX_API_SECRET}",
+        "ccxt_config": {
+             "enableRateLimit": true,
+             "rateLimit": 500
+        },
+        "ccxt_async_config": {
+             "enableRateLimit": true,
+             "rateLimit": 500
+        },
+        "pair_whitelist": [],
+        "pair_blacklist": []
+    },
+    "pairlists": [
+        {
+            "method": "VolumePairList",
+            "number_assets": 30,
+            "sort_key": "quoteVolume",
+            "min_value": 0
+        },
+        {"method": "AgeFilter", "min_days_listed": 7},
+        {"method": "PrecisionFilter"},
+        {"method": "PriceFilter", "min_price": 100}
+    ],
+    "edge": {
+        "enabled": false
+    },
+    "protections": [
+        {
+            "method": "CooldownPeriod",
+            "stop_duration_candles": 1
+        },
+        {
+            "method": "MaxDrawdown",
+            "lookback_period_candles": 48,
+            "trade_limit": 1,
+            "stop_duration_candles": 12,
+            "max_allowed_drawdown": 0.15
+        },
+        {
+            "method": "StoplossGuard",
+            "lookback_period_candles": 24,
+            "trade_limit": 3,
+            "stop_duration_candles": 24,
+            "only_per_pair": false
+        }
+    ],
+    "telegram": {
+        "enabled": false
+    },
+    "api_server": {
+        "enabled": true,
+        "listen_ip_address": "0.0.0.0",
+        "listen_port": 8080,
+        "verbosity": "info",
+        "enable_openapi": false,
+        "jwt_secret_key": "fatqul_super_secret_key",
+        "CORS_origins": ["*"],
+        "username": "fatqul",
+        "password": "fatqul_password"
+    },
+    "bot_name": "FatQul_AI_Trader",
+    "initial_state": "running",
+    "force_entry_enable": false,
+    "internals": {
+        "process_throttle_secs": 5
+    }
+}
