@@ -43,6 +43,9 @@
              "enableRateLimit": true,
              "rateLimit": 500
         },
+        "exchange_has_overrides": {
+             "fetchOHLCV": true
+        },
         "pair_whitelist": [],
         "pair_blacklist": []
     },
