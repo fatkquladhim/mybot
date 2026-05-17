@@ -37,14 +37,17 @@
         "secret": "${INDODAX_API_SECRET}",
         "ccxt_config": {
              "enableRateLimit": true,
-             "rateLimit": 500
+             "rateLimit": 500,
+             "has": {
+                 "fetchOHLCV": true
+             }
         },
         "ccxt_async_config": {
              "enableRateLimit": true,
-             "rateLimit": 500
-        },
-        "exchange_has_overrides": {
-             "fetchOHLCV": true
+             "rateLimit": 500,
+             "has": {
+                 "fetchOHLCV": true
+             }
         },
         "pair_whitelist": [],
         "pair_blacklist": []
