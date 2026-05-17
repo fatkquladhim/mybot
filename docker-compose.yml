@@ -7,6 +7,8 @@ services:
     container_name: freqtrade
     volumes:
       - "./user_data:/freqtrade/user_data"
+    entrypoint: >
+      python -c "import ccxt, sys; ccxt.indodax.has.update({'fetchOHLCV': True, 'fetchMyTrades': True, 'fetchTickers': True, 'watchOHLCV': True}); sys.argv[0] = 'freqtrade'; from freqtrade.main import main; main()"
     ports:
       - "127.0.0.1:8080:8080"
     command: >
